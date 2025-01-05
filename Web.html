@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- --------- UNICONS ---------- -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!-- --------- CSS ---------- -->
+    <!-- <link rel="stylesheet" href="web.css"> -->
+
+    <!-- --------- FAVICON ---------- -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <title>Crop Recommendation</title>
+    <style>
+        /* ----- POPPINS FONT Link ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ----- VARIABLES ----- */
+:root{
+    --body-color: rgb(250, 250, 250);
+    --color-white: rgb(255, 255, 255);
+
+    --text-color-second: rgb(68, 68, 68);
+    --text-color-third: rgb(30, 159, 171);
+
+    --first-color: rgb(110, 87, 224);
+    --first-color-hover: rgb(40, 91, 212);
+
+    --second-color: rgb(0, 201, 255);
+    --third-color: rgb(192, 166, 49);
+    --first-shadow-color: rgba(0, 0, 0, 0.1);
+
+}
+
+/* ----- BASE ----- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ----- SMOOTH SCROLL ----- */
+html{
+    scroll-behavior: smooth;
+}
+
+/* ----- CHANGE THE SCROLL BAR DESIGN ----- */
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #bbb;
+}
+.year{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 20px;
+    background: var(--third-color);
+    color: var(--color-white);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+
+/* ---##-- REUSABLE CSS --##--- */
+
+/* ----- GLOBAL BUTTON DESIGN ----- */
+.btn{
+    font-weight: 500;
+    padding: 12px 20px;
+    background: #efefef;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+}
+ 
+.read{
+    
+    background-color: rgb(243, 240, 240);
+    border-radius: 10px 100px;
+    align-items: right;
+}
+.btn>i{
+    margin-left: 10px;
+}
+.btn:hover{
+    background: var(--second-color);
+    color: var(--color-white);
+}
+
+/* ----- GLOBAL ICONS DESIGN ----- */
+i{
+    font-size: 16px;
+}
+
+/* ------- BASE -------- */
+body{
+    background: var(--body-color);
+}
+.container{
+    width: 100%;
+    position: relative;
+}
+
+/* ----- NAVIGATION BAR ----- */
+nav{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    background: var(--body-color);
+    padding-inline: 9vw;
+    transition: .3s;
+    z-index: 100;
+    font-size: 1.6rem;
+}
+.nav-logo{
+   position: relative;
+   width: 30%;
+}
+.nav-name{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-color-third);
+}
+.nav-logo span{
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    font-size: 5em;
+    color: var(--text-color-second);
+}
+.nav-menu, .nav_menu_list{
+    display: flex;
+}
+.nav-menu .nav_list{
+    list-style: none;
+    position: relative;
+}
+.nav-link{
+    text-decoration: none;
+    color: var(--text-color-second);
+    font-weight: 500;
+    padding-inline: 15px;
+    margin-inline: 20px;
+}
+.nav-menu-btn{
+    display: none;
+}
+.nav-menu-btn i{
+    font-size: 28px;
+    cursor: pointer;
+}
+.active-link{
+    position: relative;
+    color: var(--first-color);
+    transition: .3;
+}
+.active-link::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background: var(--first-color);
+    border-radius: 50%;
+}
+
+
+/* ----- WRAPPER DESIGN ----- */
+.wrapper{
+    padding-inline: 10vw;
+}
+
+/* ----- FEATURED BOX ----- */
+.featured-box{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    min-height: 700px;
+}
+
+/* ----- FEATURED TEXT BOX ----- */
+.featured-text{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 80vh;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 20px;
+}
+.featured-text-card span{
+    background: var(--third-color);
+    color: var(--color-white);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.featured-name{
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--text-color-second);
+    margin-block: 20px;
+}
+.typedText{
+    text-transform: capitalize;
+    color: var(--text-color-third);
+}
+.featured-text-info{
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: var(--text-color-second);
+}
+.featured-text-btn{
+    display: flex;
+    gap: 20px;
+}
+.featured-text-btn>.blue-btn{
+    background: var(--first-color);
+    color: var(--color-white);
+}
+.featured-text-btn>.blue-btn:hover{
+    background: var(--first-color-hover);
+}
+
+
+.social_icons{
+    display: flex;
+    margin-top: 5em;
+    gap: 30px;
+}
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.icon:hover{
+    color: var(--first-color);
+}
+
+/* ----- FEATURED IMAGE BOX ----- */
+.featured-image{
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    min-height: 80vh;
+    width: 50%;
+}
+.image{
+    margin: auto ;
+    width: 700px;
+    height: 400px;
+    background-size: 100% 100%;
+    border-radius: 20px 20px ; 
+    box-shadow: 10px 3px 9px;
+    animation: slider 10s linear infinite;
+
+}
+@keyframes slider{
+   0%{background-image: url('https://media.istockphoto.com/id/1091852218/photo/farmer-in-tractor-preparing-farmland-with-seedbed-for-the-next-year-aerial-view.jpg?s=612x612&w=0&k=20&c=3zYHb9D9miqGaKZfv2RJp7zEOc21qBH7d8YCMqfMT10=');}
+   /* 15%{background-image: url('https://media.istockphoto.com/id/1320570551/photo/peanuts-plantation-at-evening-with-sunshine-with-graphic-smart-technology-concepts.jpg?s=612x612&w=0&k=20&c=UnKsRVpYANhkFIU8F4v9tEZjRU080FWrMssWPKbixiQ=');} */
+   30%{background-image: url('https://media.istockphoto.com/id/1459661124/photo/the-farmer-manually-sows-seeds-on-the-soil-close-up-farmer-hand-planting-seeds-selective-focus.jpg?s=612x612&w=0&k=20&c=y7_xTBw9dOgjkIRvyiVyeG_AzplUXG6L-NOTy_RXBts=');}
+   60%{background-image: url('https://media.istockphoto.com/id/480284727/photo/irrigation-in-field-of-growing-potatoes.jpg?s=612x612&w=0&k=20&c=t_eNX9IUmKFbWYwJFZGY763zWys2CfEnu3SLX3myndA=');}
+   100%{background-image: url('https://media.istockphoto.com/id/1367394544/photo/variuos-healthy-food-background-with-vegetables-cereals-fruits-nuts-and-spices.jpg?s=612x612&w=0&k=20&c=gYH8JFiH53UsI_Oa_JUXOt86l88Li6uUxuY2aENzwZw=');} 
+}
+.logo-img{ 
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    
+} 
+    /* border-radius: 55% 45% 55% 45%;  -->
+    overflow: hidden;
+    animation: imgFloat 7s ease-in-out infinite;
+}
+ .logo-img{ 
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+} 
+/* @keyframes imgFloat {
+    50%{
+        transform: translateY(10px);
+        border-radius: 45% 55% 45% 55%;
+    }
+} */
+.scroll-btn{
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   translate: -50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 150px;
+   height: 50px;
+   gap: 5px;
+   text-decoration: none;
+   color: var(--text-color-second);
+   background: var(--color-white);
+   border-radius: 30px;
+   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.scroll-btn i{
+    font-size: 20px;
+}
+
+/* ----- MAIN BOX ----- */
+.section{
+    padding-block: 5em;
+}
+.container{
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+}
+.col{
+    display: flex;
+    width: 50%;
+}
+
+/* -- ## --- RESUABLE CSS -- ## -- */
+.about-team{
+    text-align: center;
+    text-align: center;
+    margin-bottom: 5em;
+}
+.top-header h1{
+    font-weight: 600;
+    color: var(--text-color-second);
+    margin-bottom: 10px;
+}
+
+.team-det{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px;
+    width: 1;
+    height: 315px;
+    background: yellowgreen; 
+    border-radius: 10px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    overflow: hidden;
+}
+.top-header{
+    text-align: center;
+    margin-bottom: 5em;
+}
+.top-header h2{
+    font-weight: 600;
+    color: var(--text-color-second);
+    margin-bottom: 10px;
+}
+.top-header span{
+    color: #999;
+}
+h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color-second);
+    margin-bottom: 15px;
+}
+
+/* ----- ABOUT INFO ----- */
+.about-info{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-block: 30px 70px;
+    padding-inline: 20px;
+    width: 100%;
+    background: var(--color-white);
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    border-radius: 20px;
+}
+.about-info p{
+    text-align: center;
+    font-size: 15px;
+    color: #777;
+}
+.about-btn button{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: var(--first-color);
+    color: var(--color-white);
+    border-radius: 30px;
+}
+.about-btn button:hover{
+    background: var(--first-color-hover);
+}
+
+/* ----- ABOUT / SKILLS BOX ----- */
+.skills-box{
+    margin: 10px;
+}
+.skills-header{
+    margin-bottom: 30px;
+}
+.skills-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.skills-list span{
+    font-size: 14px;
+    background: var(--first-color);
+    color: var(--color-white);
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+/* ----- PROJECTS BOX ----- */
+.project-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.project-box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    height: 250px;
+    background: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    overflow: hidden;
+}
+.project-box>i{
+    font-size: 50px;
+    color: #00B5E7;
+    margin-bottom: 25px;
+}
+.project-box label{
+    font-size: 15px;
+    color: #777;
+}
+.project-box::after, .contact-info::after{
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    background: var(--second-color);
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    z-index: 1;
+}
+.project-box:hover.project-box::after,
+.contact-info:hover.contact-info::after{
+    bottom: 0;
+}
+.project-box:hover.project-box i,
+.project-box:hover.project-box>h3,
+.project-box:hover.project-box>label{
+    color: var(--color-white);
+    z-index: 2;
+}
+
+/* ----- CONTACT BOX ----- */
+.contact-info{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    width: 100%;
+    height: 315px;
+    background: var(--second-color);
+    border-radius: 10px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    overflow: hidden;
+}
+.contact-info>h2{
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+.contact-info>p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-white);
+    margin-block: 5px;
+}
+.contact-info p>i{
+    font-size: 18px;
+}
+.contact-info::after{
+    background: var(--color-white);
+}
+.contact-info:hover.contact-info h2,
+.contact-info:hover.contact-info p,
+.contact-info:hover.contact-info i{
+    color: #777;
+    z-index: 2;
+}
+
+/* ----- CONTACT FORM ----- */
+.form-control{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.form-inputs{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.input-field{
+    width: 50%;
+    height: 55px;
+    background: transparent;
+    border: 2px solid #AAA;
+    border-radius: 10px;
+    padding-inline: 20px;
+    outline: none;
+}
+textarea{
+    width: 100%;
+    height: 250px;
+    background: transparent;
+    border: 2px solid #AAA;
+    border-radius: 10px;
+    padding: 15px 20px;
+    outline: none;
+    resize: none;
+}
+.form-button>.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--second-color);
+    color: var(--color-white);
+}
+.form-button>.btn:hover{
+    background: #00B5E7;
+}
+.form-button i{
+    font-size: 18px;
+    rotate: -45deg;
+}
+
+/* ----- FOOTER BOX ----- */
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    background: #F8F8F8;
+    padding-block: 40px 60px;
+}
+.top-footer p{
+    font-size: 25px;
+    font-weight: 600;
+}
+.middle-footer .footer-menu{
+    display: flex;
+}
+.footer_menu_list{
+    list-style: none;
+}
+.footer_menu_list a{
+    text-decoration: none;
+    color: var(--text-color-second);
+    font-weight: 500;
+    margin-inline: 20px;
+}
+.footer-social-icons{
+    display: flex;
+    gap: 30px;   
+}
+.bottom-footer{
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
+@media only screen and (max-width: 1024px){
+    .featured-text{
+        padding: 0;
+    }
+    .image, .image img{
+        width: 320px;
+        height: 320px;
+    }
+}
+
+/* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
+@media only screen and (max-width: 900px) {
+    .nav-button{
+        display: none;
+    }
+    .nav-menu.responsive{
+        left: 0;
+    }
+    .nav-menu{
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        width: 100%;
+        min-height: 450px;
+        height: 90vh;
+        transition: .3s;
+    }
+    .nav_menu_list{
+        flex-direction: column;
+    }
+    .nav-menu-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .featured-box{
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+    }
+    .featured-text{
+        width: 100%;
+        order: 2;
+        justify-content: center;
+        align-content: flex-start;
+        min-height: 60vh;
+    }
+    .social_icons{
+        margin-top: 2em;
+    }
+    .featured-image{
+        order: 1;
+        justify-content: center;
+        min-height: 150px;
+        width: 100%;
+        margin-top: 65px;
+    }
+    .image, .image img{
+        width: 150px;
+        height: 150px;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+    }
+    .col{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .about-info, .contact-info{
+        width: 100%;
+    }
+    .project-container{
+        justify-content: center;
+    }
+    .project-box{
+        width: 80%;
+    }
+
+}
+
+/* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
+
+@media only screen and (max-width: 540px){
+    .featured-name{
+        font-size: 40px;
+    }
+    .project-box{
+        width: 100%;
+    }
+    .form-inputs{
+        flex-direction: column;
+    }
+    .input-field{
+        width: 100%;
+    }
+}
+
+#header {
+    display : flex;
+}
+.nav-logo {
+    width: 25%;
+}
+a {
+    text-decoration: none;
+}
+.team-det ul li {
+    list-style: none;
+    font-size: 1.6rem;
+}
+.crop{
+ height: 50px;
+ width: 600px; 
+ align-items: center; 
+ text-align: center;
+ min-height: 150px;
+        width: 100%;
+        margin-top: 65px; 
+        background-size: 100% 100%;
+    border-radius: 20px 20px ; 
+    box-shadow: 10px 3px 9px;        
+}
+.featured-nam{
+    font-size: 40px;
+}
+
+
+    </style>
+</head>
+<body style="    background-image: url('https://images.unsplash.com/photo-1692369584496-3216a88f94c1?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  backdrop-filter: blur(100px);">
+   <div class="container">
+    
+    <!-- --------------- HEADER --------------- -->
+      <nav id="header">
+
+        <div class="nav-logo">
+            <p class="nav-name">The Future Of Farming <script>
+                var typingEffect = new Typed(".nav-name",{
+     strings : ["Crop Recommendation System"],
+     loop : true,
+     typeSpeed : 100, 
+     backSpeed : 80,
+     backDelay : 2000
+   })
+  
+            </script></p>
+            <span>.</span> 
+        </div>
+        <div class="nav-menu" id="myNavMenu">
+            <ul class="nav_menu_list">
+                <li class="nav_list">
+                    <a href="#home" class="nav-link active-link">Home</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#about" class="nav-link">About</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#projects" class="nav-link">Project Details</a>
+                    <div class="circle"></div>
+                </li>
+                <li class="nav_list">
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="circle"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-button">
+                <rect width="64" height="64" fill="none" />
+                <path fill="#83bf4f" d="M48.5 38.4c-8 0-10.1-6.6-10.1-6.6s2.1-8.3 10.1-8.3C54 23.5 63 31 63 31s-9 7.4-14.5 7.4M18 6.7c6.3 6.4 2.6 13.6 2.6 13.6s-7.7 4.4-14-2C2.3 13.9 1 1 1 1s12.7 1.3 17 5.7" />
+                <g fill="#75a843">
+                    <path d="M63 31c-5-1-10.1-1.6-15.1-1c-4.9.5-9.9 2.3-13.2 5.7c-1.7 1.7-2.9 3.7-3.5 5.9c-.1.5-.2 1.1-.3 1.6c-.1.6 0 1 0 1.7l.2 3.8l.7 15.3h-5l.8-15.3l.2-3.8c0-.6.1-1.4.2-2.1s.3-1.4.5-2.1c.9-2.7 2.6-5 4.7-6.7c2.1-1.8 4.5-3 7-3.9c2.5-.8 5.1-1.2 7.7-1.3c5.1-.2 10.2.8 15.1 2.2" />
+                    <path d="M1 1c5.2 3.2 10 7.2 14.2 11.7s8 9.4 11.1 14.8c1.5 2.7 3 5.5 3.9 8.7c.2.8.4 1.6.5 2.5l.1 2.4l.2 4.6l.8 18.3h-5l.8-18.4l.2-4.6l.1-1.1v-1.1c0-.6-.1-1.3-.3-2c-.6-2.8-1.8-5.6-3.2-8.3c-2.7-5.4-6.2-10.4-10.1-15.1C10.5 8.7 6.1 4.5 1 1" />
+                </g>
+            </svg></a></button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
+        </div>
+      </nav>
+
+
+    <!-- -------------- MAIN ---------------- -->
+    <main class="wrapper">
+       <!-- -------------- FEATURED BOX ---------------- -->
+       <section class="featured-box" id="home">
+          <div class="featured-text">
+            <div class="featured-text-card">
+                
+                <h2 style="color: rgb(46, 3, 3); font-family: Verdana, Geneva, Tahoma, sans-serif;">Guided By  Abdul Azizi</h2>
+            </div>
+            <div class="featured-name">
+                <p></p>
+                <p style="color: aliceblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">Technology Meets Agriculture</p>
+            </div>
+            <div class="featured-text-info">
+                <p><h3 style="color: rgb(16, 14, 14);font-family: cursive; "> "Empowering Farmers with Smart Crop Choices: Combining the Power of Technology with Nature"
+                    Unlock the potential of your fields with our innovative Crop Recommendation System.
+                    By analyzing soil, weather, and crop data, we provide personalized recommendations 
+                    to help you choose the best crops for optimal yields. Let's cultivate a future where technology and 
+                    agriculture grow together.</h3>
+                </p>
+            </div>
+            <div>
+                <h3 class="year">Project Building Year: 2024</h3>
+            </div>
+                       <div class="featured-text-btn">
+                
+            </div>
+            <div>
+                <button class="crop"><a href="{{url_for('index')}}"><p class="featured-nam">Crop Recommendation System</p></a><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 64 64"></svg>
+
+            </div>
+          </div>
+          <div class="featured-image">
+            <div class="image" id="img">
+                <!-- <img src="https://media.istockphoto.com/id/1320570551/photo/peanuts-plantation-at-evening-with-sunshine-with-graphic-smart-technology-concepts.jpg?s=612x612&w=0&k=20&c=UnKsRVpYANhkFIU8F4v9tEZjRU080FWrMssWPKbixiQ="> -->
+            </div>
+          </div>
+          <div class="scroll-icon-box">
+            <a href="#about" class="scroll-btn">
+                <i class="uil uil-mouse-alt"></i>
+                <p>Scroll Down</p>
+            </a>
+          </div>
+
+       </section>
+       <!-- -------------- ABOUT BOX ---------------- -->
+       <section class="section" id="about">
+          <div class="top-header">
+            <h1 style="color: #000000; font-family: Verdana, Geneva, Tahoma, sans-serif;">About Project</h1>
+          </div>
+          <div class="row">
+            <div class="col">
+                <div class="about-info" style="background-color: #0f8848;">
+                    <h3 style="color: #efefef;">Details</h3>
+                    <p  style="color: #F8F8F8;">"The Agricultural Crop Recommendation System using machine
+                        learning is a software application that utilizes artificial
+                        intelligence algorithms to provide recommendations to farmers
+                        on the best crops to plant based on their specific farming conditions. 
+                        The system collects and analyzes various data sources, such as soil quality, 
+                        climate, and historical crop yields, to make personalized crop recommendations. 
+                        The system is easy to use and can be accessed through a web-based platform or mobile app." 
+                        </p>
+                    <div>
+                        <button style="color4: brown; border-radius: 50px 50px;"><a href="{{ url_for('details') }}">Read More </a> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="skills-box">
+                    <div class="skills-header">
+                        <h3>Tools and Technologies</h3>
+                    </div>
+                    <div class="skills-list">
+                        <span>Flask </span>
+                        <span>Machine Learning</span>
+                        <span>Kaggle Datasets <a href="https://www.kaggle.com/code/niteshhalai/crop-recommendation-dataset">Link</a></span>
+                        <span>Python</span>
+                       
+                    </div>
+                </div>
+                <div class="skills-box">
+                    <div class="skills-header">
+                         <h3>Using Packege Files</h3>
+                    </div>
+                    <div class="skills-list">
+                         <span>Pandas</span>
+                        <span>Matplotlib</span>
+                        <span>sklearn</span>
+                        <span>Pickle</span>
+                        <span>Numpy</span>
+                        <span>Streamlit</span>
+                        <span>Flask</span>
+                        <span>Seaborn</span>
+                        <span>Distplot</span>
+                        <span>MinMaxScaler</span>
+                        <span>StandardScaler</span>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+          </div>
+       </section>
+
+       <!-- -------------- PROJECT BOX ---------------- -->
+
+       <section class="section" id="projects">
+          <div class="top-header">
+              <h1  style="color: #000000; font-family: Verdana, Geneva, Tahoma, sans-serif;">Projects</h1>
+          </div>
+          <div class="project-container">
+            <div class="project-box">
+               <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 24 24"><path fill="#472424" d="m15.718 16.598l.024 2.617l6.193-4.533l-.016-1.921zM4.522 11.38a.386.386 0 0 1 .334.381v.024l10.463 2.037l-.005-1.8L2.332 9.59l-.064 1.692l1.875.365v-.009a.3.3 0 0 1 .379-.258m7.512.931a.314.314 0 0 1 .38-.28a.4.4 0 0 1 .334.4a.312.312 0 0 1-.38.279a.4.4 0 0 1-.334-.399m-4.994-.834a.31.31 0 0 1 .38-.266a.39.39 0 0 1 .334.385a.307.307 0 0 1-.379.267a.39.39 0 0 1-.335-.386m2.941 4.453a1.46 1.46 0 0 0 1.266 1.352a1.045 1.045 0 0 0 1.226-.863a1.2 1.2 0 0 0-.043-.354l-2.346-.482a1 1 0 0 0-.103.347m3.187.287a2 2 0 0 1 .017.341a1.616 1.616 0 0 1-2.079 1.382a2.23 2.23 0 0 1-1.837-2.15a1.6 1.6 0 0 1 .076-.359l-5.422-1.115a.32.32 0 0 1-.333.118a.42.42 0 0 1-.312-.251l-1.01-.207v2.348l13.106 2.911l-.024-2.57zm-7.2.32a.293.293 0 0 1-.378.249a.41.41 0 0 1-.334-.4a.294.294 0 0 1 .378-.249a.405.405 0 0 1 .337.4zm2.182-.217a.3.3 0 0 1-.378.257a.41.41 0 0 1-.333-.4a.3.3 0 0 1 .378-.256a.4.4 0 0 1 .333.399m-4.894-2.271a.3.3 0 0 1 .378-.25a.4.4 0 0 1 .334.386l-.007.045l5.416 1.113a1.5 1.5 0 0 1 .268-.433l1.412-1.562a.44.44 0 0 1 .61-.005a.5.5 0 0 1 .11.132l1.142 2.018a2.1 2.1 0 0 1 .232.626l2.2.452l-.019-2.154l-.012-.5l-10.497-2.044a.32.32 0 0 1-.345.146a.41.41 0 0 1-.323-.276l-1.887-.367v2.506l.988.2zm5.121-1.018a.306.306 0 0 1 .379-.267a.4.4 0 0 1 .334.393a.306.306 0 0 1-.379.267a.4.4 0 0 1-.334-.393m-2.228.917a.3.3 0 0 1 .378-.258a.4.4 0 0 1 .334.391a.3.3 0 0 1-.378.258a.4.4 0 0 1-.334-.391m5.22.164l-1.146 1.269a1 1 0 0 0-.091.117l2.265.466a1.3 1.3 0 0 0-.1-.222zM8.783 7.678l-.369-.065l-.035-.006l-.309.16l-3.487 1.806l10.985 2.074l4.006-2.069Zm7.1 3.527l-.008.01a.09.09 0 0 1-.116.019a.7.7 0 0 0-.288-.109a2 2 0 0 0-.376.027l-.187.023a.7.7 0 0 1-.331 0a.36.36 0 0 1-.151-.09a.7.7 0 0 0-.145-.1a.85.85 0 0 0-.443-.134a1.5 1.5 0 0 0-.247.051c-.09.021-.154.04-.206.055a.4.4 0 0 1-.257.022a.3.3 0 0 1-.171-.154a.6.6 0 0 0-.081-.11a.87.87 0 0 0-.541-.237a.6.6 0 0 0-.263.023a1 1 0 0 1-.353.044a1.9 1.9 0 0 1-.654-.152a1.7 1.7 0 0 1-.373-.187a1 1 0 0 0-.2-.105a.9.9 0 0 0-.595 0a1.44 1.44 0 0 1-.737.022a1.1 1.1 0 0 1-.356-.15a.7.7 0 0 0-.313-.114a1 1 0 0 0-.42.027a.93.93 0 0 1-.479.011a1 1 0 0 1-.331-.144A.9.9 0 0 0 6.9 9.6a1.4 1.4 0 0 0-.21-.023a.9.9 0 0 1-.279-.046a1.6 1.6 0 0 1-.25-.1a.55.55 0 0 0-.492-.041a.1.1 0 0 1-.122-.051a.086.086 0 0 1 .048-.118a.8.8 0 0 1 .347-.052a.8.8 0 0 1 .3.1a1.4 1.4 0 0 0 .223.093a.7.7 0 0 0 .23.038a1.4 1.4 0 0 1 .239.026a1.1 1.1 0 0 1 .431.172a.8.8 0 0 0 .277.121a.73.73 0 0 0 .39-.019a1.2 1.2 0 0 1 .487-.03a.85.85 0 0 1 .386.14a.9.9 0 0 0 .3.127a1.26 1.26 0 0 0 .652-.021a1.08 1.08 0 0 1 .7.011a1 1 0 0 1 .235.123a1.4 1.4 0 0 0 .337.17a1.7 1.7 0 0 0 .6.14a.8.8 0 0 0 .3-.038a.8.8 0 0 1 .336-.028a1.04 1.04 0 0 1 .654.295a1 1 0 0 1 .1.138c.033.054.043.067.072.076s.048 0 .147-.024q.075-.023.214-.058a1.6 1.6 0 0 1 .285-.055a1 1 0 0 1 .54.158a.8.8 0 0 1 .178.127a.17.17 0 0 0 .084.051c.051.017.076.015.251-.007l.188-.023a1.8 1.8 0 0 1 .422-.026a.9.9 0 0 1 .365.136a.087.087 0 0 1 .019.123zm.952-.5l-.008.01a.09.09 0 0 1-.115.019a.7.7 0 0 0-.289-.109a1.7 1.7 0 0 0-.376.027l-.187.023a.7.7 0 0 1-.33 0a.36.36 0 0 1-.152-.09a.7.7 0 0 0-.144-.1a.86.86 0 0 0-.444-.134a2 2 0 0 0-.247.05c-.09.022-.154.041-.206.056a.4.4 0 0 1-.257.022a.3.3 0 0 1-.171-.154a1 1 0 0 0-.08-.11a.87.87 0 0 0-.542-.237a.55.55 0 0 0-.263.023a1 1 0 0 1-.353.044a1.9 1.9 0 0 1-.654-.152a1.7 1.7 0 0 1-.373-.187a1 1 0 0 0-.2-.105a.9.9 0 0 0-.595-.005a1.44 1.44 0 0 1-.737.022a1.1 1.1 0 0 1-.355-.151a.7.7 0 0 0-.314-.114a1 1 0 0 0-.42.028a.93.93 0 0 1-.478.011a1 1 0 0 1-.332-.144a.9.9 0 0 0-.366-.148a1.3 1.3 0 0 0-.21-.023a.9.9 0 0 1-.279-.046a1.6 1.6 0 0 1-.25-.1a.55.55 0 0 0-.492-.041a.1.1 0 0 1-.116-.057a.086.086 0 0 1 .047-.119a.8.8 0 0 1 .347-.051a.8.8 0 0 1 .3.1a1.5 1.5 0 0 0 .223.093a.8.8 0 0 0 .231.038a1.4 1.4 0 0 1 .238.026a1.1 1.1 0 0 1 .432.172a.8.8 0 0 0 .276.121a.73.73 0 0 0 .39-.013a1.2 1.2 0 0 1 .488-.03a.85.85 0 0 1 .385.14a.9.9 0 0 0 .3.127a1.26 1.26 0 0 0 .652-.021a1.08 1.08 0 0 1 .7.011a1 1 0 0 1 .235.123a1.5 1.5 0 0 0 .337.17a1.7 1.7 0 0 0 .6.14a.8.8 0 0 0 .3-.038a.75.75 0 0 1 .336-.028a1.05 1.05 0 0 1 .655.295a1 1 0 0 1 .1.138c.033.054.043.067.072.076s.048.005.148-.024q.074-.023.214-.058a1.6 1.6 0 0 1 .284-.055a1 1 0 0 1 .54.158a.8.8 0 0 1 .178.127a.17.17 0 0 0 .084.051c.052.017.076.015.251-.007l.189-.023a2 2 0 0 1 .421-.027a.9.9 0 0 1 .365.137a.087.087 0 0 1 .018.125zm.861-.385l-.008.01a.085.085 0 0 1-.115.019a.7.7 0 0 0-.289-.108a1.7 1.7 0 0 0-.376.027l-.187.022a.7.7 0 0 1-.331 0a.36.36 0 0 1-.151-.091a.7.7 0 0 0-.145-.1a.84.84 0 0 0-.443-.134a2 2 0 0 0-.247.05c-.09.022-.154.041-.206.056a.4.4 0 0 1-.257.022a.3.3 0 0 1-.171-.154a.7.7 0 0 0-.081-.111a.87.87 0 0 0-.541-.236a.55.55 0 0 0-.263.023a1 1 0 0 1-.353.044a1.9 1.9 0 0 1-.654-.152a1.7 1.7 0 0 1-.373-.188a1 1 0 0 0-.2-.1a.9.9 0 0 0-.6 0a1.43 1.43 0 0 1-.737.021a1 1 0 0 1-.355-.15a.7.7 0 0 0-.314-.114a1 1 0 0 0-.42.027a.9.9 0 0 1-.478.011a1 1 0 0 1-.332-.144a.9.9 0 0 0-.369-.147a1 1 0 0 0-.21-.023a1 1 0 0 1-.279-.046a1.6 1.6 0 0 1-.25-.1a.6.6 0 0 0-.235-.078a.6.6 0 0 0-.257.036a.1.1 0 0 1-.121-.05a.086.086 0 0 1 .052-.132a.74.74 0 0 1 .648.045a1.4 1.4 0 0 0 .223.094a.8.8 0 0 0 .231.038a1.4 1.4 0 0 1 .238.026a1.1 1.1 0 0 1 .431.172a.8.8 0 0 0 .277.121a.74.74 0 0 0 .394-.011a1.2 1.2 0 0 1 .488-.031a.9.9 0 0 1 .385.14a.9.9 0 0 0 .3.128a1.3 1.3 0 0 0 .652-.021a1.08 1.08 0 0 1 .7.011a1 1 0 0 1 .235.123a1.5 1.5 0 0 0 .337.169a1.7 1.7 0 0 0 .595.141a.9.9 0 0 0 .3-.038a.75.75 0 0 1 .336-.028a1.05 1.05 0 0 1 .655.295a1 1 0 0 1 .1.138c.033.054.043.066.072.076s.048.005.148-.024q.074-.023.213-.058a1.6 1.6 0 0 1 .285-.056a1.03 1.03 0 0 1 .54.158a.8.8 0 0 1 .178.128a.2.2 0 0 0 .084.051c.051.017.076.014.251-.008l.188-.022a2 2 0 0 1 .422-.027a.9.9 0 0 1 .365.137a.086.086 0 0 1 .029.125zm.775-.435a.086.086 0 0 1-.116.019a.7.7 0 0 0-.288-.108a1.7 1.7 0 0 0-.376.027l-.187.022a.7.7 0 0 1-.331 0a.36.36 0 0 1-.151-.09a.7.7 0 0 0-.145-.1a.84.84 0 0 0-.443-.134a1.5 1.5 0 0 0-.247.05c-.09.022-.154.041-.206.056a.4.4 0 0 1-.257.022a.3.3 0 0 1-.171-.154a.7.7 0 0 0-.081-.111a.87.87 0 0 0-.541-.236a.55.55 0 0 0-.263.023a1 1 0 0 1-.353.044a1.9 1.9 0 0 1-.654-.152a1.7 1.7 0 0 1-.373-.188a1 1 0 0 0-.2-.1a.9.9 0 0 0-.595 0a1.43 1.43 0 0 1-.737.021a1.1 1.1 0 0 1-.356-.15a.7.7 0 0 0-.313-.114a1 1 0 0 0-.42.027a.9.9 0 0 1-.479.011a1 1 0 0 1-.331-.144a.9.9 0 0 0-.369-.147a1 1 0 0 0-.21-.023A1 1 0 0 1 9 8.2a2 2 0 0 1-.25-.1a.6.6 0 0 0-.235-.078a.6.6 0 0 0-.257.036a.1.1 0 0 1-.12-.058a.087.087 0 0 1 .048-.119a.74.74 0 0 1 .648.045a1.4 1.4 0 0 0 .223.094a.8.8 0 0 0 .23.038a1.4 1.4 0 0 1 .239.026a1.1 1.1 0 0 1 .431.171a.8.8 0 0 0 .277.122a.76.76 0 0 0 .394-.011a1.2 1.2 0 0 1 .487-.031a.86.86 0 0 1 .386.14a.9.9 0 0 0 .3.128a1.26 1.26 0 0 0 .652-.022a1.1 1.1 0 0 1 .7.012a1 1 0 0 1 .235.123a1.5 1.5 0 0 0 .337.169a1.7 1.7 0 0 0 .595.141a.9.9 0 0 0 .3-.038a.7.7 0 0 1 .336-.028a1.04 1.04 0 0 1 .654.295a1 1 0 0 1 .1.138c.033.054.043.066.072.076s.048 0 .147-.024q.075-.023.214-.058a1.6 1.6 0 0 1 .285-.056a1.03 1.03 0 0 1 .54.158a.8.8 0 0 1 .178.128a.2.2 0 0 0 .084.051c.051.016.076.014.251-.008l.188-.023a2 2 0 0 1 .422-.026a.9.9 0 0 1 .365.137a.086.086 0 0 1 .023.125zm2.959-1.266L8.422 6.209l-.008-.001v1.405l.369.065V6.651l12.113 2.244ZM2.659 9.21l.584.11L8.06 6.798l.01.969l.309-.16l.035.006V6.208l.008.001v-.016Zm19.173 1.155l.044.081l-6.183 3.399l.024 2.646l6.194-3.834l.007.012l-.032-3.87l-6.21 3.207l.016 1.734z"/></svg>
+               <h3>SOIL <br> <a href="{{ url_for('soil') }}#about">Types of Soil</a></h3>
+                
+            </div>
+            <div class="project-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 48 48"><path fill="#45413c" d="M14.23 45.5a9.77 1.5 0 1 0 19.54 0a9.77 1.5 0 1 0-19.54 0" opacity="0.15"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M15.27 42s1 .09 3.6-9.62C21.67 22 24 19 24.56 18.46"/><path fill="#6dd627" d="M32.26 5.58a18.34 18.34 0 0 0-8 11.89a1.13 1.13 0 0 0 .85 1.3a18.36 18.36 0 0 0 14.1-2.54a18.42 18.42 0 0 0 8-11.9A1.12 1.12 0 0 0 46.36 3a18.35 18.35 0 0 0-14.1 2.58"/><path fill="#9ceb60" d="M24.78 18.63a18.38 18.38 0 0 1 21.58-12.4a1 1 0 0 1 .33.13a20 20 0 0 0 .52-2A1.12 1.12 0 0 0 46.36 3a18.39 18.39 0 0 0-22.1 14.43a1.11 1.11 0 0 0 .52 1.2"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M32.26 5.58a18.34 18.34 0 0 0-8 11.89a1.13 1.13 0 0 0 .85 1.3a18.36 18.36 0 0 0 14.1-2.54a18.42 18.42 0 0 0 8-11.9A1.12 1.12 0 0 0 46.36 3a18.35 18.35 0 0 0-14.1 2.58"/><path fill="#6dd627" d="M30.64 29.45A12.82 12.82 0 0 0 22.26 35a.79.79 0 0 0 .2 1.07a12.88 12.88 0 0 0 18.17-3.34a.79.79 0 0 0-.2-1.07a12.85 12.85 0 0 0-9.79-2.21"/><path fill="#9ceb60" d="m22.46 36l.13.09a12.87 12.87 0 0 1 16.86-1.93a13 13 0 0 0 1.18-1.5a.79.79 0 0 0-.2-1.07A12.88 12.88 0 0 0 22.26 35a.79.79 0 0 0 .2 1"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M30.64 29.45A12.82 12.82 0 0 0 22.26 35a.79.79 0 0 0 .2 1.07a12.88 12.88 0 0 0 18.17-3.34a.79.79 0 0 0-.2-1.07a12.85 12.85 0 0 0-9.79-2.21"/><path fill="#6dd627" d="M12.81 21.24A16.25 16.25 0 0 0 2 14.65a1 1 0 0 0-1.11.8A16.23 16.23 0 0 0 14.5 34.39a1 1 0 0 0 1.1-.79a16.2 16.2 0 0 0-2.79-12.36"/><path fill="#9ceb60" d="M12.81 21.25A16.23 16.23 0 0 0 2 14.65a1 1 0 0 0-1.11.8a16 16 0 0 0-.24 2.16A18 18 0 0 1 11.48 24a18.1 18.1 0 0 1 4 9.82a1 1 0 0 0 .07-.24a16.18 16.18 0 0 0-2.74-12.33"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M12.81 21.24A16.25 16.25 0 0 0 2 14.65a1 1 0 0 0-1.11.8A16.23 16.23 0 0 0 14.5 34.39a1 1 0 0 0 1.1-.79a16.2 16.2 0 0 0-2.79-12.36"/><path fill="#6dd627" d="M29 21.8a9.2 9.2 0 0 0-3.9 6a.56.56 0 0 0 .43.64a9.23 9.23 0 0 0 11-7.43a.57.57 0 0 0-.44-.64A9.23 9.23 0 0 0 29 21.8"/><path fill="#9ceb60" d="M25.56 28.47h.06A9.19 9.19 0 0 1 36 22.8a9 9 0 0 0 .5-1.76a.57.57 0 0 0-.44-.64a9.22 9.22 0 0 0-10.95 7.43a.56.56 0 0 0 .45.64"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M29 21.8a9.2 9.2 0 0 0-3.9 6a.56.56 0 0 0 .43.64a9.23 9.23 0 0 0 11-7.43a.57.57 0 0 0-.44-.64A9.23 9.23 0 0 0 29 21.8"/><path fill="#6dd627" d="M16.75 9.72A13.6 13.6 0 0 0 6.67 6.44a.84.84 0 0 0-.75.87A13.61 13.61 0 0 0 20.66 20.1a.83.83 0 0 0 .75-.86a13.57 13.57 0 0 0-4.66-9.52"/><path fill="#9ceb60" d="M6.19 9.32a.74.74 0 0 1 .48-.22a13.6 13.6 0 0 1 14.48 10.78a.8.8 0 0 0 .26-.64A13.59 13.59 0 0 0 6.67 6.44a.84.84 0 0 0-.75.87a14 14 0 0 0 .27 2.01"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M16.75 9.72A13.6 13.6 0 0 0 6.67 6.44a.84.84 0 0 0-.75.87A13.61 13.61 0 0 0 20.66 20.1a.83.83 0 0 0 .75-.86a13.57 13.57 0 0 0-4.66-9.52m-.66 31.15a11.68 11.68 0 0 1 6-5.44m-3.34-2.54c.74-2.77 4.8-2.87 6.34-4.85m-3.7-3.5s1-2.75-.52-4.46m-3.43 17.23l-.3-.32A14 14 0 0 1 15 33.88m9.54-15.44l.09-.14a23.6 23.6 0 0 1 10.64-8.64"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="m20.88 20.05l-.14-.29s-1.5-3-7.16-7.69M25.2 28.2l.49-.5a22.2 22.2 0 0 1 5-3.69M22.1 35.43s3.42-2.43 10.12-2.06M15 33.88s-1.57-5.3-7.16-11"/></svg>
+                <h3>PLANTS & DISEASES <br> <a href="{{ url_for('diseases') }}#about">Types Of Diseases</a></h3>
+                
+            </div>
+            <div class="project-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 48 48"><path fill="#45413c" d="M10.5 44.5a13.5 1.5 0 1 0 27 0a13.5 1.5 0 1 0-27 0" opacity="0.15"/><path fill="#ffe500" d="M21.68 13.09a8.2 8.2 0 1 1-10-5.84a8.2 8.2 0 0 1 10 5.84"/><path fill="#ebcb00" d="M12.43 7.09a7.62 7.62 0 1 1-1.5.4a8.17 8.17 0 1 0 1.5-.4"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M21.68 13.09a8.2 8.2 0 1 1-10-5.84a8.2 8.2 0 0 1 10 5.84"/><path fill="#fff48c" d="M14.48 8.39c.09.33-.9.87-2.19 1.21s-2.42.36-2.51 0s.9-.86 2.2-1.2s2.42-.33 2.5-.01"/><path fill="#ffe500" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M11.39 2.62a.91.91 0 0 0-1.76.46l.46 1.76a.91.91 0 1 0 1.76-.46ZM3.2 8a.91.91 0 1 0-.92 1.57l1.57.92a.91.91 0 0 0 1.25-.33a.9.9 0 0 0-.33-1.24Zm-2.01 9.55a.91.91 0 1 0 .47 1.76l1.76-.47a.91.91 0 0 0 .65-1.11a.92.92 0 0 0-1.07-.65Zm5.36 8.19A.9.9 0 0 0 6.87 27a.91.91 0 0 0 1.25-.32l.88-1.6a.91.91 0 0 0-1.58-.92Zm9.57 2a.91.91 0 0 0 1.77-.46l-.47-1.76a.91.91 0 1 0-1.76.46Zm8.2-5.35a.91.91 0 0 0 .91-1.57l-1.57-.92a.91.91 0 1 0-.92 1.57Zm2-9.58a.91.91 0 0 0-.46-1.76l-1.76.46a.91.91 0 0 0 .46 1.77ZM21 4.62a.91.91 0 0 0-1.58-.92l-.91 1.58a.91.91 0 1 0 1.57.91Z"/><path fill="#ffaa54" d="M7.88 16.73c.09.32.55.48 1 .35s.81-.49.73-.82s-.55-.48-1-.35s-.81.49-.73.82"/><path fill="#ffb0ca" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M16.41 16.05a.61.61 0 0 1 .77.58a3 3 0 0 1-5.69 1.5a.61.61 0 0 1 .38-.88Z"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M8.16 15.4a.91.91 0 1 1 1.76-.47"/><path fill="#ffaa54" d="M19.63 13.63c.08.33-.24.69-.73.82s-.95 0-1-.35s.24-.69.72-.82s.92.03 1.01.35"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M18.73 12.61a.91.91 0 1 0-1.76.47"/><path fill="#fff" d="M47.5 26.41a3.44 3.44 0 0 0-2.72-3.36a3.43 3.43 0 0 0-5.32-3.3a3.43 3.43 0 0 0-5.85-2.65a3.42 3.42 0 0 0-6.6 0a3.43 3.43 0 0 0-5.85 2.65a3.43 3.43 0 0 0-5.32 3.3A3.43 3.43 0 0 0 16 29.8a3.43 3.43 0 0 0 3.21 4.64a3.37 3.37 0 0 0 1.93-.6a3.42 3.42 0 0 0 6 2.42a3.42 3.42 0 0 0 6.22 0a3.42 3.42 0 0 0 6-2.42a3.37 3.37 0 0 0 1.93.6a3.43 3.43 0 0 0 3.31-4.64a3.43 3.43 0 0 0 2.9-3.39"/><path fill="#f0f0f0" d="M46.94 24.55a2.45 2.45 0 0 0-1.15 2A3.66 3.66 0 0 1 42.13 30a3.4 3.4 0 0 1-1-.13a1 1 0 0 0-1.22.71a3.66 3.66 0 0 1-3.53 2.68a3.56 3.56 0 0 1-2-.63a1 1 0 0 0-1.32.18a3.63 3.63 0 0 1-5.52 0a1 1 0 0 0-1.32-.18a3.56 3.56 0 0 1-2 .63a3.65 3.65 0 0 1-3.53-2.68a1 1 0 0 0-1.22-.71a3.4 3.4 0 0 1-1 .13a3.66 3.66 0 0 1-3.66-3.49a2.45 2.45 0 0 0-1.15-2a3.4 3.4 0 0 0-.56 1.86A3.43 3.43 0 0 0 16 29.8a3.43 3.43 0 0 0 3.21 4.64a3.37 3.37 0 0 0 1.93-.6a3.42 3.42 0 0 0 6 2.42a3.42 3.42 0 0 0 6.22 0a3.42 3.42 0 0 0 6-2.42a3.37 3.37 0 0 0 1.93.6a3.43 3.43 0 0 0 3.31-4.64a3.43 3.43 0 0 0 2.9-3.39a3.4 3.4 0 0 0-.56-1.86"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M47.5 26.41a3.44 3.44 0 0 0-2.72-3.36a3.43 3.43 0 0 0-5.32-3.3a3.43 3.43 0 0 0-5.85-2.65a3.42 3.42 0 0 0-6.6 0a3.43 3.43 0 0 0-5.85 2.65a3.43 3.43 0 0 0-5.32 3.3A3.43 3.43 0 0 0 16 29.8a3.43 3.43 0 0 0 3.21 4.64a3.37 3.37 0 0 0 1.93-.6a3.42 3.42 0 0 0 6 2.42a3.42 3.42 0 0 0 6.22 0a3.42 3.42 0 0 0 6-2.42a3.37 3.37 0 0 0 1.93.6a3.43 3.43 0 0 0 3.31-4.64a3.43 3.43 0 0 0 2.9-3.39"/><path fill="#ffb0ca" d="M24.24 27.93a.91.61 0 1 0 1.82 0a.91.61 0 1 0-1.82 0"/><path fill="#ffb0ca" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M32.66 29.45a.61.61 0 0 1 .59.76a3 3 0 0 1-5.88 0a.61.61 0 0 1 .59-.76Z"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M24.84 26.72a.92.92 0 0 1 1.83 0"/><path fill="#ffb0ca" d="M36.38 27.93c0 .34-.4.61-.91.61s-.91-.27-.91-.61s.41-.6.91-.6s.91.27.91.6"/><path fill="none" stroke="#45413c" stroke-linecap="round" stroke-linejoin="round" d="M35.78 26.72a.92.92 0 0 0-1.83 0"/></svg> 
+                <h3>SEASONS  <br><a href= "{{ url_for('seasons') }}#about">seasons</a></h3>
+               
+            </div>
+          </div>
+       </section>
+           
+       <!-- <a href="{{ url_for('index') }}">Home</a>
+       <a href="{{ url_for('web') }}#about">About</a>
+       <a href="{{ url_for('web') }}#projects">Projects</a>
+       <a href="{{ url_for('web') }}#contact">Contact</a> -->
+       <!-- -------------- CONTACT BOX ---------------- -->
+
+       <section class="section" id="contact">
+          <div class="about-team">
+            <h1>Get Team Details</h1>
+            <span></span>
+          </div>
+          <div>
+             <div class="top-header"> 
+                <div class="team-det" style="background-color: #0f8848;">
+                    <h1>About Team <i class="uil uil-corner-right-down"></i></h1>
+                    <ul style="color: #ffffff; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                        <li>Jogeswar Rao Nimmaka (Team Leader)</li>
+                        <li>Santosh Mogasaala</li>
+                        <li>Karthik Yerramsetty</li>
+                        <li>Charan Kolli</li>
+                    </ul>
+                    
+                </div>
+             </div>
+             
+       </section>
+
+       <section class="section" id="">
+        <div class="top-header">
+          <h1 style="color: rgb(0, 0, 0); font-family: Verdana, Geneva, Tahoma, sans-serif;">Get in touch</h1>
+          <span>contact me here</span>
+        </div>
+        <div class="row">
+           <div class="col">
+              <div class="contact-info">
+                  <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                  <p><i class="uil uil-envelope"></i> Email: nimmakajogeswararao073@gmail.com.com</p>
+                  <p><i class="uil uil-phone"></i> Tel: +91 8247410675</p>
+              </div>
+           </div>
+           <div class="col">
+              <div class="form-control">
+                  <div class="form-inputs">
+                      
+                      <input type="text" class="input-field" placeholder="Name">
+                      <input type="text" class="input-field" placeholder="Email">
+                  </div>
+                  <div class="text-area">
+                    <textarea placeholder="Message"></textarea>
+                  </div>
+                  <div class="form-button">
+                      <button class="btn">Send <i class="uil uil-message"></i></button>
+                  </div>
+              </div>
+           </div>
+        </div>
+     </section>
+
+    </main>
+
+
+    <!-- --------------- FOOTER --------------- -->
+    <footer>
+        <div class="top-footer">
+            <p> <a href="">Learn About More.</a></p>
+        </div>
+        <div class="middle-footer">
+            <ul class="footer-menu">
+                <li class="footer_menu_list">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#about">About</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#projects">Projects</a>
+                </li>
+                <li class="footer_menu_list">
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Correct Flask URL for Navigation -->
+
+
+        <!-- <div class="footer-social-icons">
+            <div class="icon"><i class="uil uil-instagram"></i></div>
+            <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
+            <div class="icon"><i class="uil uil-dribbble"></i></div>
+            <div class="icon"><i class="uil uil-github-alt"></i></div>
+        </div> -->
+        <div class="bottom-footer">
+            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Jogesw@r</a> - All rights reserved</p>
+        </div>
+    </footer>
+
+    </div>
+
+
+
+
+    <!-- ----- TYPING JS Link ----- -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+       <!-- ----- SCROLL REVEAL JS Link----- -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- ----- MAIN JS ----- -->
+    <script src="./web.js"></script>
+</body>
+</html>
